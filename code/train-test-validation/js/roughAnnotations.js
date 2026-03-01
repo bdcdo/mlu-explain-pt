@@ -33,6 +33,7 @@ const a2Intro = annotate(annotation2Intro, {
   strokeWidth: 1,
   iterations: 1,
   animate: false,
+  multiline: true,
 });
 const a3Intro = annotate(annotation3Intro, {
   type: "highlight",
@@ -56,6 +57,7 @@ const a2 = annotate(annotation2, {
   strokeWidth: 1,
   iterations: 1,
   animate: false,
+  multiline: true,
 });
 const a3 = annotate(annotation3, {
   type: "highlight",
@@ -71,6 +73,7 @@ const a4 = annotate(annotation4, {
   strokeWidth: 1,
   iterations: 1,
   animate: false,
+  multiline: true,
 });
 const a5 = annotate(annotation5, {
   type: "highlight",
@@ -78,6 +81,7 @@ const a5 = annotate(annotation5, {
   strokeWidth: 1,
   iterations: 1,
   animate: false,
+  multiline: true,
 });
 const a6 = annotate(annotation6, {
   type: "highlight",

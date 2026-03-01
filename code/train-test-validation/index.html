@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Train,Test,Validation</title>
-    <meta name="description" content="Double Descent" />
+    <title>Treino, Teste e Validação</title>
+    <meta name="description" content="Treino, Teste e Validação" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- <link rel="stylesheet" href="css/styles.scss" /> -->
     <link rel="stylesheet" href="sass/main.scss" />
   </head>
 
@@ -28,30 +27,26 @@
         </span>
         <ul id="toc">
           <li>
-            <a data-page="intro" href="#intro">Introduction</a>
+            <a data-page="intro" href="#intro">Introdução</a>
           </li>
           <li>
-            <a data-page="split" href="#split">The Split</a>
+            <a data-page="split" href="#split">A Divisão</a>
           </li>
           <li>
-            <a data-page="train" href="#train">Train Set</a>
+            <a data-page="train" href="#train">Treino</a>
           </li>
           <li>
-            <a data-page="model" href="#model">Model</a>
+            <a data-page="model" href="#model">Modelo</a>
           </li>
           <li>
-            <a data-page="validation" href="#validation">Validation Set</a>
-          </li>
-          <!-- <li>
-            <a data-page="error" href="#error">Measuring Error</a>
-          </li> -->
-          <li>
-            <a data-page="test" href="#test">Test Set</a>
+            <a data-page="validation" href="#validation">Validação</a>
           </li>
           <li>
-            <a data-page="all" href="#all">Summary</a>
+            <a data-page="test" href="#test">Teste</a>
           </li>
-          <!-- <li><a data-page="model" href="#model">model</a></li> -->
+          <li>
+            <a data-page="all" href="#all">Resumo</a>
+          </li>
 
           <div class="bubble"></div>
         </ul>
@@ -61,32 +56,33 @@
     <!-- main content -->
     <div id="scrolly">
       <section data-index="0" class="intro-mobile" id="intro-mobile">
-        <h2>The Importance of Data Splitting <br /></h2>
+        <h2>A Importância da Divisão de Dados <br /></h2>
 
         <p>
-          By
+          Por
           Jared Wilber
           &
           Brent Werness
           .<br /><br /><br /><br />
-          In most supervised machine learning tasks, best practice recommends to
-          split your data into three independent sets: a
-          <span id="annotation1"><b>training set</b></span
-          >, a <span id="annotation2"><b>testing set</b></span
-          >, and a <span id="annotation3"><b>validation set</b></span
+          Na maioria das tarefas de aprendizado de máquina supervisionado, a boa
+          prática recomenda dividir seus dados em três conjuntos independentes: um
+          <span id="annotation1"><b>conjunto de treino</b></span
+          >, um <span id="annotation2"><b>conjunto de teste</b></span
+          > e um <span id="annotation3"><b>conjunto de validação</b></span
           >. <br /><br />
 
-          To demo the reasons for splitting data in this manner, we will pretend
-          that we have a dataset made of pets of the following two types:
+          Para demonstrar as razões de dividir os dados dessa forma, vamos
+          fingir que temos um conjunto de dados com animais de estimação de
+          dois tipos:
           <br /><br />
           <span class="center"
-            ><span class="b">Cats</span>:&nbsp;
+            ><span class="b">Gatos</span>:&nbsp;
             <img
               width="1.5rem"
               height="auto"
               class="inline-svg"
               src="./assets/noun_Cat_18061.svg" />&nbsp;&nbsp;&nbsp;
-            <span class="b">Dogs</span>:&nbsp;
+            <span class="b">Cães</span>:&nbsp;
             <img
               width="1.5rem"
               height="auto"
@@ -94,22 +90,22 @@
               src="./assets/noun_Dog_79225.svg"
           /></span>
           <br /><br />
-          For each pet in the dataset we know only two features:
-          <span class="b">weight</span> and <span class="b">fluffiness</span>.
+          Para cada animal no conjunto de dados, conhecemos apenas dois atributos:
+          <span class="b">peso</span> e <span class="b">fofura</span>.
           <br /><br />
-          Our goal is to make use of the different data splits and identify a
-          best model for classifying a given pet as either a cat or a dog, based
-          on the available features.
+          Nosso objetivo é utilizar as diferentes divisões de dados e identificar
+          o melhor modelo para classificar um dado animal como gato ou cão, com
+          base nos atributos disponíveis.
         </p>
       </section>
       <figure>
         <div id="main-wrapper">
           <div class="button-container">
-            <p>Select feature:</p>
-            <button class="button" value="neither">None</button>
-            <button class="button active" value="weight">Weight</button>
-            <button class="button" value="fluffiness">Fluffiness</button>
-            <button class="button" value="both">Both</button>
+            <p>Selecione o atributo:</p>
+            <button class="button" value="neither">Nenhum</button>
+            <button class="button active" value="weight">Peso</button>
+            <button class="button" value="fluffiness">Fofura</button>
+            <button class="button" value="both">Ambos</button>
           </div>
           <div id="chart-wrapper">
             <div id="chart"></div>
@@ -120,29 +116,30 @@
       </figure>
       <article>
         <section data-index="0" class="intro" id="intro">
-          <h2>The Importance of Data Splitting <br /></h2>
+          <h2>A Importância da Divisão de Dados <br /></h2>
           <p>
-            By Jared Wilber
+            Por Jared Wilber
             &
             Brent Werness
             .<br /><br /><br /><br />
-            In most supervised machine learning tasks, best practice recommends
-            to split your data into three independent sets: a
-            <span id="annotation1-intro"><b>training set</b></span
-            >, a <span id="annotation2-intro"><b>testing set</b></span
-            >, and a <span id="annotation3-intro"><b>validation set</b></span
+            Na maioria das tarefas de aprendizado de máquina supervisionado, a
+            boa prática recomenda dividir seus dados em três conjuntos
+            independentes: um
+            <span id="annotation1-intro"><b>conjunto de treino</b></span
+            >, um <span id="annotation2-intro"><b>conjunto de teste</b></span
+            > e um <span id="annotation3-intro"><b>conjunto de validação</b></span
             >. <br /><br />
 
-            To see why, let's pretend that we have a dataset of two types of
-            pets: <br /><br />
+            Para entender por quê, vamos fingir que temos um conjunto de dados
+            com dois tipos de animais de estimação: <br /><br />
             <span class="center"
-              ><span class="b">Cats</span>:&nbsp;
+              ><span class="b">Gatos</span>:&nbsp;
               <img
                 width="1.5rem"
                 height="auto"
                 class="inline-svg"
                 src="./assets/noun_Cat_18061.svg" />&nbsp;&nbsp;&nbsp;&nbsp;
-              <span class="b">Dogs</span>:&nbsp;
+              <span class="b">Cães</span>:&nbsp;
               <img
                 width="1.5rem"
                 height="auto"
@@ -150,248 +147,215 @@
                 src="./assets/noun_Dog_79225.svg"
             /></span>
             <br /><br />
-            For each pet in our dataset, we have two features:
-            <span class="bold">weight</span> and
-            <span class="bold">fluffiness</span>. <br /><br />
-            Our goal is to identify and evaluate suitable models for classifying
-            a given pet as either a cat or a dog. We'll use
-            train/test/validations splits to do this!
+            Para cada animal no nosso conjunto de dados, temos dois atributos:
+            <span class="bold">peso</span> e
+            <span class="bold">fofura</span>. <br /><br />
+            Nosso objetivo é identificar e avaliar modelos adequados para
+            classificar um dado animal como gato ou cão. Vamos usar as divisões
+            treino/teste/validação para fazer isso!
           </p>
         </section>
         <section data-index="1" class="split" id="split">
-          <h2>Train, Test, and Validation Splits</h2>
+          <h2>Divisões de Treino, Teste e Validação</h2>
           <p>
-            The first step in our classification task is to randomly
-            <!-- <span
-              class="tooltip-item"
-              >[*]<span class="tooltiptext">
-                The random assignment to each split is important to ensure that
-                each independent dataset is as representative and free from
-                confounding factors as possible
-              </span></span
-            > -->
-            split our pets into three independent sets:
+            O primeiro passo na nossa tarefa de classificação é dividir
+            aleatoriamente nossos animais em três conjuntos independentes:
             <br /><br />
-            <span id="annotation4"><span class="bold">Training Set</span></span
+            <span id="annotation4"><span class="bold">Conjunto de Treino</span></span
             >:
             <span class="item-text"
-              >The dataset that we feed our model to learn potential underlying
-              patterns and relationships.</span
+              >O conjunto de dados que fornecemos ao nosso modelo para
+              aprender padrões e relações subjacentes.</span
             ><br /><br />
             <span id="annotation5"
-              ><span class="bold">Validation Set</span></span
+              ><span class="bold">Conjunto de Validação</span></span
             >:
             <span class="item-text"
-              >The dataset that we use to understand our model's performance
-              across different model types and parameter choices.</span
+              >O conjunto de dados que usamos para avaliar o desempenho do
+              nosso modelo entre diferentes tipos de modelos e escolhas de
+              parâmetros.</span
             ><br /><br />
-            <span id="annotation6"><span class="bold">Test Set</span></span
+            <span id="annotation6"><span class="bold">Conjunto de Teste</span></span
             >:
             <span class="item-text"
-              >The dataset that we use to approximate our model's accuracy in
-              the wild.</span
+              >O conjunto de dados que usamos para estimar a acurácia do nosso
+              modelo no mundo real.</span
             >
           </p>
         </section>
         <section data-index="2" class="train" id="train">
-          <h2>The Training Set</h2>
+          <h2>O Conjunto de Treino</h2>
           <p>
             <span id="annotation7"
-              >The training set is the dataset that we employ to train our
-              model.</span
+              >O conjunto de treino é o conjunto de dados que empregamos para
+              treinar nosso modelo.</span
             >
-            It is this dataset that our model uses to learn every potential
-            underlying pattern or relationship that will enable making
-            predictions later on. <br /><br />
-            Since our model learns from it, it is very important that the
-            training set be as representative as possible
-            <!-- <span
-              class="tooltip-item"
-              >[*]<span class="tooltiptext">
-                <a href="https://arxiv.org/abs/2103.03399"
-                  >This paper explores the importance of diverse and
-                  representative training data for machine learning
-                  performance</a
-                ></span
-              ></span
-            > -->
-            of the population that we are trying to model. <br /><br />
-            Additionally, we need to be careful and ensure that it is as
-            unbiased as possible, as any bias at this stage will be propagated
-            downstream
-            <!-- <span class="tooltip-item"
-              >[*]<span class="tooltiptext">
-                <a href="https://arxiv.org/abs/1901.10002"
-                  >Downstream harms occur across many machine learning models</a
-                >. Examples abound, including such diverse areas as
-                <a
-                  href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing"
-                  >criminal sentencing</a
-                >
-                and
-                <a href="https://www.nature.com/articles/d41586-019-03228-6"
-                  >health-care</a
-                >
-              </span></span
-            > -->
-            during inference. <br /><br />
-            To give our model as much information to learn from as possible, we
-            typically assign the majority (e.g. 60&ndash;80%) of our original
-            data to the training set.
+            É a partir deste conjunto que nosso modelo aprende todos os padrões
+            e relações subjacentes que permitirão fazer predições
+            posteriormente. <br /><br />
+            Como nosso modelo aprende a partir dele, é muito importante que o
+            conjunto de treino seja o mais representativo possível da população
+            que estamos tentando modelar. <br /><br />
+            Além disso, precisamos ter cuidado e garantir que ele seja o mais
+            livre de viés possível, pois qualquer viés nesta etapa será
+            propagado nas etapas seguintes durante a inferência. <br /><br />
+            Para dar ao nosso modelo o máximo de informação possível para
+            aprender, tipicamente atribuímos a maioria (por exemplo,
+            60&ndash;80%) dos nossos dados originais ao conjunto de treino.
           </p>
         </section>
         <section data-index="3" class="model" id="model">
-          <h2>Building Our Model</h2>
+          <h2>Construindo Nosso Modelo</h2>
           <p>
-            Our goal is to determine whether a given pet is a cat or a dog. This
-            is a binary classification task, so we will use a simple but
-            effective model appropriate for this task:
+            Nosso objetivo é determinar se um dado animal é um gato ou um cão.
+            Esta é uma tarefa de classificação binária, então usaremos um modelo
+            simples mas eficaz, apropriado para esta tarefa:
             <a href="https://www.youtube.com/watch?v=jhJwNpidiqM"
-              ><span class="bold">logistic regression</span></a
+              ><span class="bold">regressão logística</span></a
             >. <br /><br />
-            Given a particular combination of the available features (<span
+            Dada uma combinação específica dos atributos disponíveis (<span
               class="bold"
-              >None</span
-            >, <span class="bold">Weight</span>,
-            <span class="bold">Fluffiness</span>, or <i>both</i>
-            <span class="bold">Weight</span> and
-            <span class="bold">Fluffiness</span>), the logistic regression
-            classifier will generate a decision boundary to partition the pets
-            into either cats or dogs. Each pet will be classified based on its
-            position relative to the decision boundary: one side for dogs, the
-            other for cats. <br /><br />
-            Select the feature set of your choice to visualize the corresponding
-            logistic regression model's decision boundary. <br /><br /><b
-              >Drag each animal in the training set to a new position to see how
-              the boundary updates!</b
+              >Nenhum</span
+            >, <span class="bold">Peso</span>,
+            <span class="bold">Fofura</span>, ou <i>ambos</i>
+            <span class="bold">Peso</span> e
+            <span class="bold">Fofura</span>), o classificador de regressão
+            logística irá gerar uma fronteira de decisão para dividir os animais
+            em gatos ou cães. Cada animal será classificado com base na sua
+            posição relativa à fronteira de decisão: um lado para cães, o outro
+            para gatos. <br /><br />
+            Selecione o conjunto de atributos da sua escolha para visualizar a
+            fronteira de decisão do modelo de regressão logística
+            correspondente. <br /><br /><b
+              >Arraste cada animal no conjunto de treino para uma nova posição
+              para ver como a fronteira se atualiza!</b
             >
           </p>
         </section>
 
         <section data-index="4" class="validation" id="validation">
-          <h2>The Validation Set</h2>
+          <h2>O Conjunto de Validação</h2>
           <p>
-            For logistic regression, we can build four different classifiers
-            &mdash; one for each choice of features to be included in the model:
-            none
-            <!-- <span class="tooltip-item"
-              >[*]<span class="tooltiptext"> i.e. majority vote</span></span
-            > -->
-            , just weight, just fluffiness, or both weight and fluffiness.
+            Para a regressão logística, podemos construir quatro classificadores
+            diferentes &mdash; um para cada escolha de atributos a serem
+            incluídos no modelo: nenhum, apenas peso, apenas fofura, ou ambos
+            peso e fofura.
             <br /><br />
-            <b>How should we decide which model to select?</b> <br /><br />
-            We could compare the accuracy of each model on the training set, but
-            doing so will result in a biased outcome &mdash; if we use the same
-            exact dataset for both training and tuning, the model will overfit
-            and will not generalize well beyond that dataset.<br /><br />
-            <b>This is where the validation set comes in</b> &mdash;
+            <b>Como devemos decidir qual modelo selecionar?</b> <br /><br />
+            Poderíamos comparar a acurácia de cada modelo no conjunto de treino,
+            mas fazer isso resultaria em um resultado enviesado &mdash; se
+            usarmos o mesmo conjunto de dados para treinar e ajustar, o modelo
+            irá sobreajustar (overfitting) e não generalizará bem para dados
+            novos.<br /><br />
+            <b>É aqui que o conjunto de validação entra</b> &mdash;
             <span id="annotation8"
-              >it acts as an independent, unbiased dataset for comparing the
-              performance of different algorithm and hyperparameter choices
-              trained on our training set.</span
+              >ele atua como um conjunto de dados independente e não enviesado
+              para comparar o desempenho de diferentes algoritmos e escolhas de
+              hiperparâmetros treinados no nosso conjunto de treino.</span
             >
             <br /><br />
-            In our case, we are only looking at one algorithm (logistic
-            regression), but we can view the number of considered features as a
-            hyperparameter that we would like to tune<span class="tooltip-item"
+            No nosso caso, estamos olhando apenas um algoritmo (regressão
+            logística), mas podemos considerar o número de atributos como um
+            hiperparâmetro que gostaríamos de ajustar<span class="tooltip-item"
               >[*]<span class="tooltiptext">
-                For expository purposes, we won't worry about other choices for
-                our logistic regression model, such as specific solvers or
-                regularization penalties</span
+                Para fins didáticos, não nos preocuparemos com outras escolhas
+                para nosso modelo de regressão logística, como solvers
+                específicos ou penalidades de regularização</span
               ></span
             >.<br /><br />
-            Select a feature to view the model's performance on the validation
-            set in the table below.
+            Selecione um atributo para ver o desempenho do modelo no conjunto de
+            validação na tabela abaixo.
             <br /><br />
             <b
-              >Drag the feature across the line to see how the performance
-              updates!</b
+              >Arraste os animais através da linha para ver como o desempenho se
+              atualiza!</b
             >
           </p>
         </section>
 
         <section data-index="5" class="test" id="test">
-          <h2>The Testing Set</h2>
+          <h2>O Conjunto de Teste</h2>
           <p>
-            So, assuming you did not go too crazy moving the pets around, our
-            best model (according to the validation set) is the model that takes
-            both features into account. <br /><br />
-            Once we have used the validation set to determine the algorithm and
-            parameter choices that we would like to use in production, the test
-            set is used to approximate the models's true performance in the
-            wild.
-            <br /><br />Let's repeat that again:
+            Então, supondo que você não tenha movido muito os animais, nosso
+            melhor modelo (segundo o conjunto de validação) é o modelo que
+            considera ambos os atributos. <br /><br />
+            Uma vez que usamos o conjunto de validação para determinar o
+            algoritmo e as escolhas de parâmetros que gostaríamos de usar em
+            produção, o conjunto de teste é usado para estimar o verdadeiro
+            desempenho do modelo no mundo real.
+            <br /><br />Vamos repetir:
             <span id="annotation9"
-              >the test set is used as the final step in evaluating our model's
-              performance on unseen data.</span
+              >o conjunto de teste é usado como a etapa final na avaliação do
+              desempenho do nosso modelo em dados não vistos.</span
             >
             <br /><br />
             <b
-              >We should never, under any circumstance, look at the test set's
-              performance before selecting a model.</b
+              >Nunca devemos, sob nenhuma circunstância, olhar o desempenho do
+              conjunto de teste antes de selecionar um modelo.</b
             >
             <br /><br />
-            The role of model selection and parameter tuning is strictly for the
-            validation set.
+            O papel de seleção de modelo e ajuste de parâmetros é estritamente
+            do conjunto de validação.
             <br /><br />
-            Peeking at our test set performance ahead of time is a form of
-            overfitting, and will likely lead to unreliable performance
-            expectations in production. It should only be checked as the final
-            form of evaluation, after the validation set has been used to
-            identify the best model.
+            Espiar o desempenho do conjunto de teste antecipadamente é uma forma
+            de sobreajuste (overfitting), e provavelmente levará a expectativas
+            de desempenho não confiáveis em produção. Ele só deve ser verificado
+            como a forma final de avaliação, após o conjunto de validação ter
+            sido usado para identificar o melhor modelo.
           </p>
         </section>
         <section data-index="6" class="all" id="all">
-          <h2>Summary</h2>
+          <h2>Resumo</h2>
           <p>
-            You may have noticed that the test accuracy of the "just fluffiness"
-            model was higher than that of the "both features" model, despite the
-            validation set selecting the latter model as the best. This
-            occurrence of the validation performance not exactly matching the
-            test performance might happen, yet it is not a bad thing. Remember
-            that the test performance is not a number to optimize over &mdash;
-            it is a metric to assess future performance. It allows us to
-            estimate, with confidence, that our model can distinguish between
-            cats and dogs with 87.5% accuracy.
+            Você pode ter notado que a acurácia de teste do modelo "apenas
+            fofura" foi maior que a do modelo "ambos os atributos", apesar do
+            conjunto de validação ter selecionado o último como o melhor. Essa
+            ocorrência do desempenho na validação não corresponder exatamente ao
+            desempenho no teste pode acontecer, mas não é algo ruim. Lembre-se
+            que o desempenho no teste não é um número para otimizar &mdash; é
+            uma métrica para avaliar o desempenho futuro. Ela nos permite
+            estimar, com confiança, que nosso modelo consegue distinguir entre
+            gatos e cães com 87,5% de acurácia.
 
             <br /><br />
-            <span class="bold">Key Takeaways</span>
+            <span class="bold">Pontos-Chave</span>
             <br /><br />
-            It is best practice in machine learning to split our data into the
-            following three groups:
+            É uma boa prática em aprendizado de máquina dividir nossos dados nos
+            três grupos a seguir:
 
             <br /><br />
             <span id="annotation10"
-              ><span class="bold">Training Set</span>:
-              <span class="item-text">For training of the model.</span></span
+              ><span class="bold">Conjunto de Treino</span>:
+              <span class="item-text">Para treinamento do modelo.</span></span
             >
             <br /><br />
             <span id="annotation11">
-              <span class="bold">Validation Set</span>:
+              <span class="bold">Conjunto de Validação</span>:
               <span class="item-text"
-                >For unbiased evaluation of the model.</span
+                >Para avaliação não enviesada do modelo.</span
               ></span
             ><br /><br />
             <span id="annotation12"
-              ><span class="bold">Test Set</span>:
+              ><span class="bold">Conjunto de Teste</span>:
               <span class="item-text"
-                >For final evaluation of the model.</span
+                >Para avaliação final do modelo.</span
               ></span
             >
             <br /><br />
-            Adhering to this setup helps ensure that we have a realistic
-            understanding of our model's performance, and that we (hopefully)
-            built a model that generalizes well to unseen data.
+            Seguir esta estrutura ajuda a garantir que temos uma compreensão
+            realista do desempenho do nosso modelo, e que (esperamos) construímos
+            um modelo que generaliza bem para dados não vistos.
             <br /><br />
             <span class="center">🐾</span>
             <br /><br />
-            Thanks for reading! To learn more about machine learning, check out
+            Obrigado por ler! Para aprender mais sobre aprendizado de máquina,
+            confira
             <a href="https://aws.amazon.com/machine-learning/"
-              >our website</a
-            >, watch
+              >nosso site</a
+            >, assista
             <a href="https://www.youtube.com/channel/UC12LqyqTQYbXatYS9AA7Nuw"
-              >our videos</a
-            >, or read the <a href="https://d2l.ai/"> D2L book</a>. <br /><br />
+              >nossos vídeos</a
+            > ou leia o <a href="https://d2l.ai/">livro D2L</a>. <br /><br />
           </p>
         </section>
 

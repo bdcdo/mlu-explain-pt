@@ -130,22 +130,22 @@ export class Bubble {
       intro: {
         x: this.WIDTH / 2,
         y: this.HEIGHT / 2,
-        fullname: "Intro",
+        fullname: "Início",
       },
       test: {
         x: this.WIDTH / 5.5,
         y: this.yGroupHeight,
-        fullname: "Test",
+        fullname: "Teste",
       },
       train: {
         x: this.WIDTH / 2,
         y: this.yGroupHeight,
-        fullname: "Train",
+        fullname: "Treino",
       },
       validation: {
         x: this.WIDTH / 1.2,
         y: this.yGroupHeight,
-        fullname: "Validation",
+        fullname: "Validação",
       },
       offscreen: {
         x: this.WIDTH / 2,
@@ -572,7 +572,7 @@ export class Bubble {
     this.hullText = this.hullG
       .append("text")
       .attr("id", "hull-text")
-      .text("Majority Vote: Cat")
+      .text("Voto Majoritário: Gato")
       .attr("text-anchor", "middle")
       .attr("opacity", 0);
 
@@ -600,7 +600,7 @@ export class Bubble {
         .append("text")
         .attr("class", "axes-text")
         .attr("id", "x-axis-text")
-        .text("Fluffiness")
+        .text("Fofura")
         .attr("x", this.WIDTH / 2)
         .attr("y", this.HEIGHT * 0.95)
         .attr("text-anchor", "middle");
@@ -615,10 +615,10 @@ export class Bubble {
         .attr("x", 0 - this.HEIGHT / 2)
         .attr("dy", "1rem")
         .style("text-anchor", "middle")
-        .text("Weight");
+        .text("Peso");
     } else {
       // draw x
-      const upperCaseFeature = feature === "weight" ? "Weight" : "Fluffiness";
+      const upperCaseFeature = feature === "weight" ? "Peso" : "Fofura";
       this.svg
         .append("text")
         .attr("class", "axes-text")
@@ -1165,7 +1165,7 @@ export class Bubble {
 
   addLegend() {
     const that = this;
-    const legendData = ["Train Error", "Test Error"];
+    const legendData = ["Erro de Treino", "Erro de Teste"];
 
     const nodeWidth = (d) => d.getBBox().width;
 
@@ -1229,22 +1229,22 @@ export class Bubble {
       intro: {
         x: this.WIDTH / 2,
         y: this.HEIGHT / 2,
-        fullname: "Intro",
+        fullname: "Início",
       },
       test: {
         x: this.WIDTH / 5.5,
         y: this.yGroupHeight,
-        fullname: "Test",
+        fullname: "Teste",
       },
       train: {
         x: this.WIDTH / 2,
         y: this.yGroupHeight,
-        fullname: "Train",
+        fullname: "Treino",
       },
       validation: {
         x: this.WIDTH / 1.2,
         y: this.yGroupHeight,
-        fullname: "Validation",
+        fullname: "Validação",
       },
       offscreen: {
         x: this.WIDTH / 2,

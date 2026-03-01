@@ -12,13 +12,13 @@ export class Table {
 
     // set col names
     this.columnNames = [
-      "dataset",
-      "feature",
-      "# cat right",
-      "# cat wrong",
-      "# dog right",
-      "# dog wrong",
-      "accuracy",
+      "conjunto",
+      "atributo",
+      "# gato correto",
+      "# gato errado",
+      "# cão correto",
+      "# cão errado",
+      "acurácia",
     ];
 
     // draw base table
@@ -44,13 +44,13 @@ export class Table {
 
   updateTable(newRow) {
     const updatedRow = {
-      dataset: newRow["dataset"],
-      feature: newRow["feature"],
-      "# cat right": newRow["cat right"],
-      "# cat wrong": newRow["cat wrong"],
-      "# dog right": newRow["dog right"],
-      "# dog wrong": newRow["dog wrong"],
-      accuracy: newRow["accuracy"],
+      "conjunto": newRow["dataset"],
+      "atributo": newRow["feature"],
+      "# gato correto": newRow["cat right"],
+      "# gato errado": newRow["cat wrong"],
+      "# cão correto": newRow["dog right"],
+      "# cão errado": newRow["dog wrong"],
+      "acurácia": newRow["accuracy"],
     };
 
     // update rows
