@@ -45,6 +45,19 @@ Procurar em TODOS os `.js`:
 #### Meta tags
 Atualizar `<title>` e `<meta name="description">` para português.
 
+#### Landing page — Preservar estrutura HTML dos cards
+Ao traduzir a landing page (`index.html` na raiz), **preservar a estrutura HTML completa** dos cards de artigos. Cada card DEVE manter:
+```html
+<div class="content">
+  <h2 class="article-title">TÍTULO TRADUZIDO</h2>
+  <p class="article-description">Descrição traduzida...</p>
+  <button class="content-button"><a href="./artigo/">Explorar</a></button>
+</div>
+```
+**NUNCA remover ou omitir o `<h2 class="article-title">`** — ele é o título visível do card. Traduzir apenas o texto, mantendo a tag e a classe.
+
+Regra geral: ao traduzir qualquer arquivo HTML, **traduzir o conteúdo de texto, nunca remover elementos estruturais** (tags, classes, IDs). Comparar com o original se houver dúvida.
+
 ### 3. Rebuild obrigatório
 Após traduzir, **sempre** fazer rebuild:
 ```bash
