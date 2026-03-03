@@ -6,11 +6,11 @@ section {
   text-align: center;
   align-items: center;
   justify-content: center;
-  height: 115vh;
+  height: 135vh;
 }
 
 section {
-  margin-bottom: 24vh;
+  margin-bottom: 28vh;
   h2 {
     padding-top: 20vh;
     font-size: 2.5rem;
@@ -38,7 +38,7 @@ section p {
 
 @media (max-width: 950px) {
   section {
-    margin-bottom: 50vh;
+    margin-bottom: 55vh;
     margin-top: 10vh;
 
     h2 {
@@ -49,18 +49,18 @@ section p {
 
 @media (max-width: 800px) {
   section {
-    height: 180vh;
+    height: 210vh;
   }
 }
 
 @media (max-height: 700px) and (min-width: 750px) {
   section {
-    height: 160vh;
+    height: 190vh;
   }
 }
 
 @media (max-height: 400px) and (min-width: 750px) {
   section {
-    height: 220vh;
+    height: 260vh;
   }
 }

@@ -23,6 +23,12 @@ Sempre atualizar a tag `<html>` para `lang="pt-BR"`.
 #### Annotations (rough-notation) — `multiline: true`
 O texto em português é **mais longo** que em inglês. As annotations do `rough-notation` que não tinham `multiline: true` ficaram cortadas/desalinhadas. **Sempre adicionar `multiline: true` a TODAS as annotations**, mesmo que o original não tenha.
 
+#### Espaçamento entre seções (scrollytelling)
+O texto em português é **~20-30% mais longo** que em inglês. Artigos com layout scrollytelling (seções com `height` fixa em `vh`) precisam de ajuste:
+- **Aumentar `height` das seções em ~15-20%** nos arquivos SCSS/CSS (ex: `115vh` → `135vh`)
+- **Ajustar `margin-bottom` proporcionalmente** em todos os breakpoints responsivos
+- **Testar visualmente** scrollando todo o artigo, verificando que o texto não transborda e as transições entre seções funcionam
+
 #### Separar valores de código vs. texto visível
 Botões e selects têm `value` para uso em JS e texto visível para o usuário:
 ```html
@@ -45,6 +51,16 @@ Procurar em TODOS os `.js`:
 #### Meta tags
 Atualizar `<title>` e `<meta name="description">` para português.
 
+#### Remover conteúdo promocional da Amazon/MLU
+Ao traduzir, **sempre remover** as seções de "Thanks for reading!" / "Obrigado pela leitura!" que contêm links promocionais para:
+- Cursos AWS MLU (aws.amazon.com/machine-learning/mlu/)
+- Canal YouTube da MLU
+- Livro Dive into Deep Learning (d2l.ai)
+- Repositório GitHub aws-samples/aws-mlu-explain
+- Twitter dos autores originais
+
+Essas seções aparecem em `Conclusion.svelte`, `Resources.svelte`, ou diretamente no `index.html` no final do artigo. A licença CC-BY-SA 4.0 permite essa remoção (é Material Adaptado). A atribuição aos autores é mantida no README e nos arquivos de licença.
+
 #### Landing page — Preservar estrutura HTML dos cards
 Ao traduzir a landing page (`index.html` na raiz), **preservar a estrutura HTML completa** dos cards de artigos. Cada card DEVE manter:
 ```html
@@ -57,6 +73,9 @@ Ao traduzir a landing page (`index.html` na raiz), **preservar a estrutura HTML 
 **NUNCA remover ou omitir o `<h2 class="article-title">`** — ele é o título visível do card. Traduzir apenas o texto, mantendo a tag e a classe.
 
 Regra geral: ao traduzir qualquer arquivo HTML, **traduzir o conteúdo de texto, nunca remover elementos estruturais** (tags, classes, IDs). Comparar com o original se houver dúvida.
+
+#### Créditos e atribuições
+Ao traduzir, **preservar todos os créditos e atribuições** do artigo original. Verificar o site original (mlu-explain.github.io) para confirmar que nenhum crédito foi omitido. Traduzir o texto dos créditos para português.
 
 ### 3. Rebuild obrigatório
 Após traduzir, **sempre** fazer rebuild:
