@@ -54,8 +54,7 @@ export default {
     commonjs(),
     !production && serve(),
     !production && livereload("public"),
-    // terser disabled - katex unicode regex issue
-    // production && terser(),
+    production && terser({ ecma: 2015 }),
   ],
   watch: {
     clearScreen: false,

@@ -1,5 +1,5 @@
 <svelte:head>
-    <title>MLU-Explain: Retropropagacao (Backpropagation)</title>
+    <title>MLU-Explain: Retropropagação (Backpropagation)</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
@@ -8,12 +8,12 @@
     />
     <meta
         name="description"
-        content="Uma introducao visual e interativa a Retropropagacao (Backpropagation) em redes neurais."
+        content="Uma introdução visual e interativa à Retropropagação (Backpropagation) em redes neurais."
     />
-    <meta property="og:title" content="Retropropagacao (Backpropagation)" />
+    <meta property="og:title" content="Retropropagação (Backpropagation)" />
     <meta
         property="og:description"
-        content="Aprenda como redes neurais aprendem atraves da retropropagacao de gradientes."
+        content="Aprenda como redes neurais aprendem através da retropropagação de gradientes."
     />
     <meta property="og:image:width" content="1000" />
     <meta property="og:image:height" content="630" />

@@ -118,61 +118,61 @@
 
   // Paragraph text for each step
   $: steps = [
-    `<h1 class='step-title'>A Populacao</h1>
-     <p>Imagine uma populacao de <strong>1.000 pessoas</strong>. Cada quadrado
+    `<h1 class='step-title'>A População</h1>
+     <p>Imagine uma população de <strong>1.000 pessoas</strong>. Cada quadrado
      representa uma pessoa. Vamos investigar o que acontece quando aplicamos
-     um teste medico para detectar uma doenca rara.</p>`,
+     um teste médico para detectar uma doença rara.</p>`,
 
     `<h1 class='step-title'>A Priori: P(D) = 1%</h1>
-     <p>A doenca afeta <strong>1% da populacao</strong>. Isso significa que,
-     das 1.000 pessoas, apenas <strong>${SICK} estao doentes</strong>
+     <p>A doença afeta <strong>1% da população</strong>. Isso significa que,
+     das 1.000 pessoas, apenas <strong>${SICK} estão doentes</strong>
      <span style="color:${COLOR_SICK}; font-weight:bold;">(vermelho)</span>
-     e <strong>${HEALTHY} estao saudaveis</strong>
+     e <strong>${HEALTHY} estão saudáveis</strong>
      <span style="color:${COLOR_HEALTHY}; font-weight:bold;">(azul)</span>.</p>
-     <p>Essa e a <em>probabilidade a priori</em> (prior):
+     <p>Essa é a <em>probabilidade a priori</em> (prior):
      ${katexify("P(D) = " + PREVALENCE)}</p>`,
 
     `<h1 class='step-title'>Sensibilidade: 99%</h1>
-     <p>O teste tem <strong>sensibilidade de 99%</strong>: se voce esta doente,
+     <p>O teste tem <strong>sensibilidade de 99%</strong>: se você está doente,
      o teste detecta corretamente em 99% dos casos.</p>
      <p>Dos <strong>${SICK} doentes</strong>, <strong>${TRUE_POS} testam positivo</strong>
      <span style="color:${COLOR_TRUE_POS}; font-weight:bold;">(verdadeiros positivos)</span>.
-     ${FALSE_NEG > 0 ? `Apenas ${FALSE_NEG} doente(s) escapa(m) da deteccao.` : "Nenhum doente escapa da deteccao."}</p>
+     ${FALSE_NEG > 0 ? `Apenas ${FALSE_NEG} doente(s) escapa(m) da detecção.` : "Nenhum doente escapa da detecção."}</p>
      <p>${katexify("P(+|D) = " + SENSITIVITY)}</p>`,
 
     `<h1 class='step-title'>Falsos Positivos: 5%</h1>
-     <p>Mas o teste nao e perfeito. Ele tem uma <strong>taxa de falsos positivos de 5%</strong>
+     <p>Mas o teste não é perfeito. Ele tem uma <strong>taxa de falsos positivos de 5%</strong>
      (especificidade de 95%).</p>
-     <p>Dos <strong>${HEALTHY} saudaveis</strong>, <strong>${FALSE_POS} testam positivo
+     <p>Dos <strong>${HEALTHY} saudáveis</strong>, <strong>${FALSE_POS} testam positivo
      falsamente</strong>
      <span style="color:${COLOR_FALSE_POS}; font-weight:bold;">(falsos positivos)</span>.
-     E aqui que a surpresa comeca!</p>
+     É aqui que a surpresa começa!</p>
      <p>${katexify("P(+|\\neg D) = " + FPR)}</p>`,
 
     `<h1 class='step-title'>O Resultado Contra-Intuitivo</h1>
      <p>Total de resultados positivos: <strong>${TRUE_POS} + ${FALSE_POS} = ${TOTAL_POS}</strong>.</p>
      <p>Dos ${TOTAL_POS} que testaram positivo, apenas
-     <strong style="color:${COLOR_TRUE_POS};">${TRUE_POS}</strong> realmente tem a doenca.
-     Os outros <strong style="color:${COLOR_FALSE_POS};">${FALSE_POS}</strong> sao alarmes falsos!</p>
+     <strong style="color:${COLOR_TRUE_POS};">${TRUE_POS}</strong> realmente têm a doença.
+     Os outros <strong style="color:${COLOR_FALSE_POS};">${FALSE_POS}</strong> são alarmes falsos!</p>
      <p><strong style="font-size: 1.2em;">Apenas ${pctFormat(POSTERIOR)} dos positivos
-     realmente estao doentes!</strong></p>
-     <p>Voce testou positivo, mas a chance de realmente estar doente e de apenas 1 em 6.</p>`,
+     realmente estão doentes!</strong></p>
+     <p>Você testou positivo, mas a chance de realmente estar doente é de apenas 1 em 6.</p>`,
 
-    `<h1 class='step-title'>A Formula de Bayes</h1>
-     <p>O Teorema de Bayes formaliza esse calculo:</p>
+    `<h1 class='step-title'>A Fórmula de Bayes</h1>
+     <p>O Teorema de Bayes formaliza esse cálculo:</p>
      <p style="text-align:center;">${katexify("P(D|+) = \\frac{P(+|D) \\cdot P(D)}{P(+)}", true)}</p>
      <p style="text-align:center;">${katexify("= \\frac{" + SENSITIVITY + " \\times " + PREVALENCE + "}{" + SENSITIVITY + " \\times " + PREVALENCE + " + " + FPR + " \\times " + (1 - PREVALENCE).toFixed(2) + "}", true)}</p>
      <p style="text-align:center;">${katexify("= \\frac{" + (SENSITIVITY * PREVALENCE).toFixed(4) + "}{" + (SENSITIVITY * PREVALENCE + FPR * (1 - PREVALENCE)).toFixed(4) + "} \\approx " + pctFormat(POSTERIOR), true)}</p>
-     <p>A <em>prior baixa</em> (doenca rara) "domina" o calculo, mesmo com um teste excelente.</p>`,
+     <p>A <em>prior baixa</em> (doença rara) "domina" o cálculo, mesmo com um teste excelente.</p>`,
 
-    `<h1 class='step-title'>Atualizacao: Segundo Teste</h1>
+    `<h1 class='step-title'>Atualização: Segundo Teste</h1>
      <p>Se re-testarmos apenas os <strong>${TOTAL_POS} positivos</strong>, a <em>nova priori</em>
-     agora e ${pctFormat(POSTERIOR)} (muito maior que os ${pctFormatInt(PREVALENCE)} iniciais!).</p>
+     agora é ${pctFormat(POSTERIOR)} (muito maior que os ${pctFormatInt(PREVALENCE)} iniciais!).</p>
      <p>Resultado do segundo teste: <strong style="color:${COLOR_SECOND_POS};">${SECOND_TRUE_POS} verdadeiros positivos</strong>
      e apenas <strong>${SECOND_FALSE_POS} falsos positivos</strong>.</p>
      <p><strong style="font-size: 1.2em;">Agora ${pctFormat(SECOND_POSTERIOR)} dos positivos
-     realmente estao doentes!</strong></p>
-     <p>Assim funciona a atualizacao bayesiana: cada nova evidencia refina nossa crenca.</p>`,
+     realmente estão doentes!</strong></p>
+     <p>Assim funciona a atualização bayesiana: cada nova evidência refina nossa crença.</p>`,
   ];
 
   // Event handlers for each step
@@ -504,7 +504,7 @@
     // Legend
     drawLegend(bg, startY + barH + 30, [
       { color: COLOR_SICK, label: `Doentes (${SICK})` },
-      { color: COLOR_HEALTHY, label: `Saudaveis (${HEALTHY})` },
+      { color: COLOR_HEALTHY, label: `Saudáveis (${HEALTHY})` },
     ]);
   }
 
@@ -570,7 +570,7 @@
       .attr("font-family", "var(--font-heavy)")
       .attr("font-size", "13px")
       .attr("fill", "#333")
-      .text("Dos " + HEALTHY + " saudaveis:");
+      .text("Dos " + HEALTHY + " saudáveis:");
 
     bg.append("rect")
       .attr("x", 20).attr("y", startY + 8)
@@ -837,11 +837,11 @@
   });
 </script>
 
-<h2 class="body-header">Teste Medico para Doenca Rara</h2>
+<h2 class="body-header">Teste Médico para Doença Rara</h2>
 <p class="body-text">
-  Acompanhe a visualizacao abaixo enquanto rola a pagina para entender
-  por que um resultado positivo em um teste muito preciso nao significa
-  necessariamente que voce esta doente.
+  Acompanhe a visualização abaixo enquanto rola a página para entender
+  por que um resultado positivo em um teste muito preciso não significa
+  necessariamente que você está doente.
 </p>
 
 <section>

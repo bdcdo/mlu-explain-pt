@@ -1,6 +1,6 @@
 <section id="intro">
-  <h1 id="intro-hed">Retropropagacao</h1>
-  <h1 class="intro-sub">Uma introducao visual a como redes neurais aprendem.</h1>
+  <h1 id="intro-hed">Retropropagação</h1>
+  <h1 class="intro-sub">Uma introdução visual a como redes neurais aprendem.</h1>
   <h3 id="intro__date">
     Março 2026
   </h3>

@@ -12,65 +12,65 @@
   const steps = [
     `<h1 class='step-title'>Passo 0: A Rede Neural</h1>
      <p>Aqui temos uma rede neural simples com <strong>3 camadas</strong>:
-     2 neuronios de entrada, 3 neuronios ocultos e 1 neuronio de saida.
-     Cada conexao tem um <strong>peso</strong> (weight) associado, que
-     determina a forca do sinal transmitido.</p>
-     <p>Inicialmente, os pesos sao atribuidos aleatoriamente. A rede
-     ainda nao "sabe" nada.</p>`,
+     2 neurônios de entrada, 3 neurônios ocultos e 1 neurônio de saída.
+     Cada conexão tem um <strong>peso</strong> (weight) associado, que
+     determina a força do sinal transmitido.</p>
+     <p>Inicialmente, os pesos são atribuídos aleatoriamente. A rede
+     ainda não "sabe" nada.</p>`,
 
     `<h1 class='step-title'>Passo 1: Valores de Entrada</h1>
      <p>Alimentamos a rede com os valores de entrada:
      ${katexify("x_1 = 0{,}5")} e ${katexify("x_2 = 0{,}8")}.</p>
      <p>Esses valores representam os <strong>atributos</strong> (features)
-     de um exemplo do nosso conjunto de dados. Note os pesos nas conexoes
-     que conectam a entrada a camada oculta.</p>`,
+     de um exemplo do nosso conjunto de dados. Note os pesos nas conexões
+     que conectam a entrada à camada oculta.</p>`,
 
-    `<h1 class='step-title'>Passo 2: Propagacao Direta</h1>
-     <p>Na <strong>propagacao direta</strong> (forward pass), os dados
-     fluem da esquerda para a direita. Cada neuronio oculto calcula
-     a <em>soma ponderada</em> das entradas e aplica uma <em>funcao
-     de ativacao</em> (sigmoid):</p>
+    `<h1 class='step-title'>Passo 2: Propagação Direta</h1>
+     <p>Na <strong>propagação direta</strong> (forward pass), os dados
+     fluem da esquerda para a direita. Cada neurônio oculto calcula
+     a <em>soma ponderada</em> das entradas e aplica uma <em>função
+     de ativação</em> (sigmoid):</p>
      <p style="text-align:center">${katexify("h = \\sigma(w_1 x_1 + w_2 x_2 + b)", true)}</p>
-     <p>Os valores resultantes aparecem nos neuronios da camada oculta.</p>`,
+     <p>Os valores resultantes aparecem nos neurônios da camada oculta.</p>`,
 
-    `<h1 class='step-title'>Passo 3: Saida da Rede</h1>
-     <p>O mesmo processo se repete: o neuronio de saida calcula a soma
-     ponderada dos valores da camada oculta e aplica a funcao sigmoid.</p>
-     <p>O resultado e a <strong>predicao</strong> da rede:
+    `<h1 class='step-title'>Passo 3: Saída da Rede</h1>
+     <p>O mesmo processo se repete: o neurônio de saída calcula a soma
+     ponderada dos valores da camada oculta e aplica a função sigmoid.</p>
+     <p>O resultado é a <strong>predição</strong> da rede:
      ${katexify("\\hat{y} = 0{,}63")}. O valor esperado
-     (alvo) e ${katexify("y = 1{,}0")}.</p>
+     (alvo) é ${katexify("y = 1{,}0")}.</p>
      <p>A rede errou. Precisamos quantificar esse erro.</p>`,
 
-    `<h1 class='step-title'>Passo 4: Funcao de Perda</h1>
-     <p>A <strong>funcao de perda</strong> (loss function) mede o
-     quanto a predicao se afasta do valor real. Usamos o
-     <em>erro quadratico medio</em>:</p>
+    `<h1 class='step-title'>Passo 4: Função de Perda</h1>
+     <p>A <strong>função de perda</strong> (loss function) mede o
+     quanto a predição se afasta do valor real. Usamos o
+     <em>erro quadrático médio</em>:</p>
      <p style="text-align:center">${katexify("L = \\frac{1}{2}(y - \\hat{y})^2 = \\frac{1}{2}(1{,}0 - 0{,}63)^2 = 0{,}137", false)}</p>
-     <p>Nosso objetivo e <strong>minimizar</strong> essa perda
+     <p>Nosso objetivo é <strong>minimizar</strong> essa perda
      ajustando os pesos da rede.</p>`,
 
-    `<h1 class='step-title'>Passo 5: Propagacao Reversa</h1>
+    `<h1 class='step-title'>Passo 5: Propagação Reversa</h1>
      <p>Agora vem o <strong>backpropagation</strong>! Os gradientes
-     fluem da saida de volta para a entrada, usando a
+     fluem da saída de volta para a entrada, usando a
      <strong>regra da cadeia</strong>:</p>
      <p style="text-align:center">${katexify("\\frac{\\partial L}{\\partial w} = \\frac{\\partial L}{\\partial \\hat{y}} \\cdot \\frac{\\partial \\hat{y}}{\\partial z} \\cdot \\frac{\\partial z}{\\partial w}", true)}</p>
-     <p>Cada gradiente indica o quanto e em que direcao cada peso
+     <p>Cada gradiente indica o quanto e em que direção cada peso
      deve mudar para reduzir a perda.</p>`,
 
-    `<h1 class='step-title'>Passo 6: Atualizacao dos Pesos</h1>
+    `<h1 class='step-title'>Passo 6: Atualização dos Pesos</h1>
      <p>Com os gradientes calculados, atualizamos os pesos usando a
      regra de <strong>descida do gradiente</strong>:</p>
      <p style="text-align:center">${katexify("w_{\\text{novo}} = w_{\\text{antigo}} - \\eta \\cdot \\frac{\\partial L}{\\partial w}", true)}</p>
-     <p>Onde ${katexify("\\eta")} e a <strong>taxa de aprendizado</strong>
-     (learning rate). Observe como a espessura das conexoes muda,
+     <p>Onde ${katexify("\\eta")} é a <strong>taxa de aprendizado</strong>
+     (learning rate). Observe como a espessura das conexões muda,
      refletindo os novos pesos.</p>`,
 
-    `<h1 class='step-title'>Passo 7: Convergencia</h1>
-     <p>Repetimos o ciclo (forward + backward + atualizacao) muitas
-     vezes, uma para cada <strong>epoca</strong>. A cada iteracao, a
+    `<h1 class='step-title'>Passo 7: Convergência</h1>
+     <p>Repetimos o ciclo (forward + backward + atualização) muitas
+     vezes, uma para cada <strong>época</strong>. A cada iteração, a
      perda diminui progressivamente.</p>
-     <p>O grafico abaixo mostra a <strong>curva de perda</strong>
-     convergindo para zero ao longo de 15 epocas. E assim que redes
+     <p>O gráfico abaixo mostra a <strong>curva de perda</strong>
+     convergindo para zero ao longo de 15 épocas. É assim que redes
      neurais aprendem!</p>`,
   ];
 
